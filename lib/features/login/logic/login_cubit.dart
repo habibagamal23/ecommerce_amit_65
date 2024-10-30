@@ -11,9 +11,8 @@ import '../model/loginrespone.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  final AuthService _authService;
 
-  LoginCubit(this._authService) : super(LoginInitial());
+  LoginCubit() : super(LoginInitial());
 
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -26,31 +25,7 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginpassToggle(ispass));
   }
 
-  Future<void> login() async {
-    if (!formKey.currentState!.validate()) {
-      return;
-    }
 
-    emit(LoginLoading());
-    try {
-      final loginBody = LoginRequestBody(
-        username: usernameController.text,
-        password: passwordController.text,
-      );
-
-      final LoginResponse? response = await _authService.login(loginBody);
-
-      if (response != null) {
-        await SharedPrefsHelper.setToken(response.token);
-
-        emit(LoginSuccess(response.token));
-      } else {
-        emit(LoginFailure("Login failed. Invalid username or password."));
-      }
-    } catch (e) {
-      emit(LoginFailure("Login error: ${e.toString()}"));
-    }
-  }
 
   @override
   Future<void> close() {

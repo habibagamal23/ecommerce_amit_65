@@ -1,11 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/utils/appregx.dart';
 import '../../../../core/utils/spacing.dart';
 import '../../../../core/widgets/textfieldcutom.dart';
-import '../../../../generated/locale_keys.g.dart';
 import '../../logic/login_cubit.dart';
 
 class EmailAndPassword extends StatelessWidget {
@@ -20,12 +17,12 @@ class EmailAndPassword extends StatelessWidget {
       child: Column(
         children: [
           CustomFormTextField(
-            labelText: LocaleKeys.Authentication_user_name.tr(),
-            hintText: LocaleKeys.Authentication_user_name.tr(),
+            labelText: 'Username',
+            hintText: 'Username',
             controller: loginCubit.usernameController,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return LocaleKeys.Authentication_enterEmail.tr();
+                return 'Username';
               }
               return null;
             },
@@ -40,8 +37,8 @@ class EmailAndPassword extends StatelessWidget {
 
               return CustomFormTextField(
                 isObscureText: !isPasswordVisible,
-                labelText: LocaleKeys.Authentication_password.tr(),
-                hintText: LocaleKeys.Authentication_password.tr(),
+                labelText: 'pass',
+                hintText: 'pass',
                 controller: loginCubit.passwordController,
                 suffixIcon: IconButton(
                   onPressed: () {
@@ -53,7 +50,7 @@ class EmailAndPassword extends StatelessWidget {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return LocaleKeys.Authentication_enterPassword.tr();
+                    return 'pass';
                   }
                   return null;
                 },
