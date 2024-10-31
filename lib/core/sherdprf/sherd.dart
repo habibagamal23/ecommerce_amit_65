@@ -16,27 +16,24 @@ class SharedPrefsHelper {
   }
 
   static Future<void> setLanguage(String languageCode) async {
-    debugPrint('SharedPrefHelper :set  data : language ');
+    debugPrint('SharedPrefHelper :set  data : language  $languageCode');
 
     await _preferences.setString("language", languageCode);
   }
 
   static Future<int> getTheme() async {
-    debugPrint('SharedPrefHelper : get  data them :');
+    debugPrint('SharedPrefHelper : get  data them ');
 
     return _preferences.getInt("them") ?? 0;
   }
 
   static Future<void> setTheme(int themeindex) async {
-    debugPrint('SharedPrefHelper : set data them');
+    debugPrint('SharedPrefHelper : set data them $themeindex');
     await _preferences.setInt("them", themeindex);
   }
 
-
-
   static Future<void> setToken(String token) async {
-    debugPrint('SharedPrefHelper : set data token');
-
+    debugPrint('SharedPrefHelper : set data token $token');
     await _preferences.setString('auth_token', token);
   }
 

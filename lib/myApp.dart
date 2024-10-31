@@ -1,4 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce65/core/sherdprf/sherd.dart';
+import 'package:ecommerce65/core/utils/extention.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +9,7 @@ import 'LogicApp/ThemeLogic/theme_cubit.dart';
 import 'LogicApp/langugue_cubit.dart';
 import 'core/routs/approuter.dart';
 import 'core/routs/routs.dart';
+import 'core/utils/constent.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -39,7 +42,8 @@ class MyApp extends StatelessWidget {
                         ? locale
                         : const Locale('en');
                   },
-                  initialRoute: Routes.loginScreen,
+                  initialRoute:
+                      isLoggedInUser ? Routes.homeScreen : Routes.loginScreen,
                   onGenerateRoute: AppRouter.generateRoute,
                 );
               },
@@ -48,5 +52,14 @@ class MyApp extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+checkIfLoggedInUser() async {
+  String? userToken = await SharedPrefsHelper.getToken();
+  if (!userToken.isNullOrEmpty()) {
+    isLoggedInUser = true;
+  } else {
+    isLoggedInUser = false;
   }
 }

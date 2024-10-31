@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce65/core/routs/routs.dart';
 import 'package:ecommerce65/core/utils/colors.dart';
+import 'package:ecommerce65/core/utils/extention.dart';
 import 'package:ecommerce65/features/login/ui/widgets/DontHaveAccountText.dart';
 import 'package:ecommerce65/features/login/ui/widgets/EmailAndPassword.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +43,7 @@ class Loginscreen extends StatelessWidget {
                     },
                   ),
                 ),
-                verticalSpace(30),
+             verticalSpace(10),
                 Text(
                   LocaleKeys.Authentication_title_Login.tr(),
                   style: Theme.of(context)
@@ -58,6 +60,8 @@ class Loginscreen extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text("Login Successful!") , backgroundColor: ColorsManager.mainGreen,),
                       );
+                      context.pushReplacementNamed(Routes.homeScreen);
+
                     } else if (state is LoginFailure) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text(state.error) , backgroundColor: ColorsManager.mainRed,),
@@ -72,6 +76,7 @@ class Loginscreen extends StatelessWidget {
                     return CustomButton(
                       text: LocaleKeys.Authentication_Login_bottom.tr(),
                       onPressed: () => context.read<LoginCubit>().login(),
+
                     );
                   },
                 ),

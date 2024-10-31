@@ -4,37 +4,13 @@ import '../../features/login/model/loginreqbody.dart';
 import '../../features/login/model/loginrespone.dart';
 
 class AuthService {
-  final Dio _dio;
+  final Dio dio;
 
-  AuthService()
-      : _dio = Dio(
-          BaseOptions(
-              baseUrl: 'https://fakestoreapi.com',
-              connectTimeout: Duration(seconds: 5),
-              receiveTimeout: Duration(seconds: 3)),
-
-        ) {
-    _dio.interceptors.add(PrettyDioLogger(
-      requestHeader: true,
-      requestBody: true,
-      responseBody: true,
-      responseHeader: true,
-      error: true,
-      compact: false,
-      maxWidth: 90,
-    ));
-
-    _dio.interceptors.add(InterceptorsWrapper(
-      onError: (DioError e, ErrorInterceptorHandler handler) {
-        print('Error: ${e.message}');
-        return handler.next(e);
-      },
-    ));
-  }
+  AuthService(this.dio);
 
   Future<LoginResponse?> login(LoginRequestBody loginBody) async {
     try {
-      final response = await _dio.post(
+      final response = await dio.post(
         '/auth/login',
         data: loginBody.toJson(),
       );
