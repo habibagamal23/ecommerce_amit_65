@@ -6,6 +6,7 @@ import 'LogicApp/langugue_cubit.dart';
 import 'core/di/di.dart';
 import 'core/networks/AuthService.dart';
 import 'core/sherdprf/sherd.dart';
+import 'features/productsscreen/prudct_cubit.dart';
 import 'generated/codegen_loader.g.dart';
 import 'myApp.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,6 +29,9 @@ void main() async {
         providers: [
           BlocProvider(create: (_) => ThemeCubit()),
           BlocProvider(create: (_) => LangugueCubit()),
+          BlocProvider(
+            create: (context) => getIt<PrudctCubit>(),
+          ),
         ],
         child: const MyApp(),
       ),

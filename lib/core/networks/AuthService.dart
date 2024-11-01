@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../../features/login/model/loginreqbody.dart';
 import '../../features/login/model/loginrespone.dart';
+import 'Error.dart';
 
 class AuthService {
   final Dio dio;
@@ -20,20 +20,10 @@ class AuthService {
       } else {
         throw Exception("Failed to login. No token received.");
       }
-    } on DioError catch (e) {
-      // Handle Dio-specific errors
-      if (e.type == DioErrorType.connectionError) {
-        print("Connection error: ${e.message}");
-      } else if (e.type == DioErrorType.receiveTimeout) {
-        print("Receive timeout error: ${e.message}");
-      } else if (e.type == DioErrorType.badResponse) {
-        print("Invalid response: ${e.response?.data}");
-      } else {
-        print("Login error: ${e.message}");
-      }
-      return null;
+
+    } on DioException catch (e) {
+      throw handleDioError(e);
     } catch (e) {
-      // Catch other unexpected errors
       print("Unexpected error: $e");
       return null;
     }
