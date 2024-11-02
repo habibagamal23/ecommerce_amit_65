@@ -4,19 +4,22 @@ import 'package:ecommerce65/core/utils/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../Model/CategoryModel.dart';
+import '../../../../generated/assets.dart';
+
 class PromotionalCarousel extends StatelessWidget {
-
-
-
-  const PromotionalCarousel({
-    super.key,
-  });
+  final List<String> catogry;
+  const PromotionalCarousel({super.key, required this.catogry});
 
   @override
   Widget build(BuildContext context) {
+    List<String> ImagesCategory = [
+      Assets.imagesElectronics,
+      Assets.imagesJelwry,
+      Assets.imagesMens,
+      Assets.imagesWomen,
+    ];
     return CarouselSlider.builder(
-      itemCount: categories.length,
+      itemCount: catogry.length,
       options: CarouselOptions(
         height: 180.h,
         autoPlay: true,
@@ -40,7 +43,7 @@ class PromotionalCarousel extends StatelessWidget {
                 left: 170.w,
                 bottom: 20.h,
                 child: Image.asset(
-                  categories[index].imageCategory,
+                  ImagesCategory[index],
                   fit: BoxFit.cover,
                 ),
               ),
@@ -51,11 +54,11 @@ class PromotionalCarousel extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      categories[index].nameCategory,
+                      catogry[index].toUpperCase(),
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                     verticalSpace(30),
                     OutlinedButton(

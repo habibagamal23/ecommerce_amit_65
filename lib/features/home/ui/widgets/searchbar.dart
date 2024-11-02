@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce65/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,7 +24,7 @@ class Searchbar extends StatelessWidget {
           Expanded(
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Search any Product...',
+                hintText: LocaleKeys.homepage_search_bar.tr(),
                 border: InputBorder.none,
                 hintStyle: TextStyle(color: Colors.grey, fontSize: 14.sp),
               ),

@@ -2,27 +2,23 @@ part of 'home_cubit.dart';
 
 @immutable
 sealed class HomeState {}
-
 final class HomeInitial extends HomeState {}
 
-// Products states
-class ProductsLoading extends HomeState {}
-class ProductsLoaded extends HomeState {
+class HomeLoading extends HomeState {}
+
+final class HomeLoaded extends HomeState {
+  final List<String> categories;
   final List<Product> products;
-  ProductsLoaded(this.products);
-}
-class ProductsError extends HomeState {
-  final String message;
-  ProductsError(this.message);
+  final String selectedCategory;
+
+  HomeLoaded({
+    required this.categories,
+    required this.products,
+    required this.selectedCategory,
+  });
 }
 
-// Single Product states
-class SingleProductLoading extends HomeState {}
-class SingleProductLoaded extends HomeState {
-  final Product product;
-  SingleProductLoaded(this.product);
-}
-class SingleProductError extends HomeState {
+class CategoriesError extends HomeState {
   final String message;
-  SingleProductError(this.message);
+  CategoriesError(this.message);
 }

@@ -20,7 +20,13 @@
 
 },
   "homepage": {
-    "home_page": "الصفحة الرئيسية"
+    "home_page": "الصفحة الرئيسية",
+    "all_featured": "كل المميز",
+    "sort": "ترتيب",
+    "filter": "تصفية",
+    "deal_of_the_day": "عرض اليوم",
+    "view_all": "عرض الكل",
+    "search_bar": "ابحث عن المنتج"
   }
 }
 

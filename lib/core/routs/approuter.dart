@@ -6,8 +6,6 @@ import '../../features/home/logic/home_cubit.dart';
 import '../../features/home/ui/homescreen.dart';
 import '../../features/login/logic/login_cubit.dart';
 import '../../features/login/ui/loginscreen.dart';
-import '../../features/productsscreen/productscreen.dart';
-import '../../features/productsscreen/prudct_cubit.dart';
 import '../../features/splash/splsh.dart';
 import '../di/di.dart';
 
@@ -33,11 +31,6 @@ class AppRouter {
             create: (context) => getIt<HomeCubit>(),
             child: const Homescreen(),
           ),
-        );
-
-      case Routes.productDtailes:
-        return MaterialPageRoute(
-          builder: (_) => const ProductGrid(),
         );
 
       default:

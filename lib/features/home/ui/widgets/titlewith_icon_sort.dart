@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../generated/locale_keys.g.dart';
 
 class TitleWithActions extends StatelessWidget {
   final String title;
@@ -34,7 +37,7 @@ class TitleWithActions extends StatelessWidget {
                 onPressed: onSortPressed,
                 icon: Icon(Icons.sort, size: 16.sp, color: Colors.black),
                 label: Text(
-                  'Sort',
+                  LocaleKeys.homepage_sort.tr(),
                   style: TextStyle(color: Colors.black, fontSize: 14.sp),
                 ),
                 style: ElevatedButton.styleFrom(
@@ -51,7 +54,7 @@ class TitleWithActions extends StatelessWidget {
                 onPressed: onFilterPressed,
                 icon: Icon(Icons.filter_list, size: 16.sp, color: Colors.black),
                 label: Text(
-                  'Filter',
+                  LocaleKeys.homepage_filter.tr(),
                   style: TextStyle(color: Colors.black, fontSize: 14.sp),
                 ),
                 style: ElevatedButton.styleFrom(

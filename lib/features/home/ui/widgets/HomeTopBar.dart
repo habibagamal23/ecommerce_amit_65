@@ -1,6 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../LogicApp/langugue_cubit.dart';
 import '../../../../core/utils/spacing.dart';
 import '../../../../generated/assets.dart';
 
@@ -27,10 +30,17 @@ class HomeTopBar extends StatelessWidget {
               horizontalSpace(30),
             ],
           ),
-          CircleAvatar(
-            radius: 20.0.r,
-            backgroundImage: const AssetImage(Assets.imagesLogo),
-          ),
+          IconButton(
+            icon: const Icon(Icons.language),
+            onPressed: () {
+              final newLanguageCode =
+              context.locale.languageCode == 'en' ? 'ar' : 'en';
+              context
+                  .read<LangugueCubit>()
+                  .changeLanguage(newLanguageCode);
+              context.setLocale(Locale(newLanguageCode));
+            },
+          )
         ],
       ),
     );

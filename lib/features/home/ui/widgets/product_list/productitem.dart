@@ -220,21 +220,23 @@ class ProductCard extends StatelessWidget {
         Text(
           "₹${product.price.toString()}",
           style: TextStyle(
-              fontSize: 14.sp,
+              fontSize: 12.sp,
               fontWeight: FontWeight.bold, color: Colors.black),
+          overflow: TextOverflow.ellipsis,
         ),
         SizedBox(width: 4.w),
         Text(
           "₹${discountPrice.toStringAsFixed(2)}",
           style: TextStyle(
-              fontSize: 12.sp,
+              fontSize: 10.sp,
               color: Colors.grey,
-              decoration: TextDecoration.lineThrough),
+              decoration: TextDecoration.lineThrough,    overflow: TextOverflow.ellipsis,),
         ),
         SizedBox(width: 2.w),
         Text(
           "${discountPercentage.toStringAsFixed(0)}%Off",
-          style: TextStyle(fontSize: 12.sp, color: Colors.red),
+          style: TextStyle(fontSize: 10.sp,
+              color: Colors.red ,    overflow: TextOverflow.ellipsis,),
         ),
       ],
     );
@@ -266,4 +268,4 @@ class ProductCard extends StatelessWidget {
       ],
     );
   }
-}s
+}

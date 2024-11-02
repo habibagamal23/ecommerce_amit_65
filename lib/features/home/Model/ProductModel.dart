@@ -5,7 +5,7 @@ class Product {
   final String category;
   final String description;
   final String image;
-  final Rating rating; // New rating field
+  final Rating rating;
 
   Product({
     required this.id,

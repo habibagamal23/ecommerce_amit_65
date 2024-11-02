@@ -10,3 +10,10 @@ Exception handleDioError(DioException e) {
       return Exception("Load error: ${e.message}");
   }
 }
+// if (e.type == DioExceptionType.connectionError) {
+//   throw Exception("Connection error: ${e.message}");
+// } else if (e.type == DioExceptionType.badResponse) {
+//   throw Exception("Invalid response: ${e.response?.data}");
+// } else {
+//   throw Exception("Load error: ${e.message}");
+// }
